@@ -1,9 +1,10 @@
 <?php
+
   class Database{
     private $host = "localhost";
-    private $database = "root";
-    private $user = "";
-    private $password = "php_api_jwt";
+    private $database = "php_api_jwt";
+    private $user = "root";
+    private $password = "";
 
     private $mysqli = "";
     private $result = array();
@@ -23,6 +24,17 @@
 
       } else {
         return true;
+      }
+    }
+
+    public function tableExist($table){
+      $sql = "SHOW TABLES FROM $this->database
+      LIKE '{$table}";
+      $tableInDb = $this->mysqli->query($sql);
+      if($tableInDb){
+        if($tableInDb->num_rows() == 1){
+          
+        }
       }
     }
 
